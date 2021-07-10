@@ -7,6 +7,7 @@ function Signup({ setState }) {
 
     function submit(event) {
         event.preventDefault();
+
         if (event.target.elements[1].value !== event.target.elements[2].value) {
             event.target.elements[1].style.border = "2px dashed red";
             event.target.elements[2].style.border = "2px dashed red";
@@ -39,9 +40,7 @@ function Signup({ setState }) {
     return (
         <>
             <form className="form-container" id="cred-form" onSubmit={submit} >
-                {/* <label htmlFor="email">Email:</label> */}
                 <input className="form-item" id="email" type="email" placeholder="Email *" value={email} onChange={(event) => setEmail(event.target.value)} required />
-                {/* <label htmlFor="password">Password:</label> */}
                 <input className="form-item" id="password1" type="password" placeholder="Password *" onChange={(event) => setPassword(event.target.value)} required />
                 <input className="form-item" id="password2" type="password" placeholder="Re-enter Password *" required />
             </form>
