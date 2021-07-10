@@ -11,3 +11,93 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.login-container {
+  max-width: 600px;
+  justify-self: center;
+  border-radius: 10px;
+  border-style: none;
+  margin: auto;
+  background: linear-gradient(to left, orange, yellow);
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 
+    "header header"
+    "form form"
+    "footerSwitch footerButton";
+}
+
+.form-container {
+  /* margin: 20px; */
+  /* padding:100px; */
+  justify-items: center;
+  grid-area: form;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: 
+    "emailGrid"
+    "pass1Grid"
+    "pass2Grid";
+}
+
+.form-item {
+  margin:10px;
+  width: 70%;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: thin;
+  border-color: gray;
+
+  background-color: white;
+  height: 40px;
+  background: linear-gradient(70deg, var(--c1, white), var(--c2, transparent) 0%, white) var(--x, 0)/ 200%;
+  transition: 2s;
+}
+
+.form-item:hover{
+  --x:100%;
+  filter: drop-shadow(0px 0px 5px gray);
+}
+
+
+
+
+.header {
+  grid-area: header;
+
+}
+
+#email {
+  grid-area: emailGrid;
+}
+#password1 {
+  grid-area: pass1Grid;
+}
+#password2 {
+  grid-area: pass2Grid;
+}
+.submit-btn {
+  grid-area: footerButton;
+  cursor: pointer;
+  width: 90px;
+  height: 40px;
+  border-radius: 4px;
+  border-color: rgb(9, 207, 207);
+  color:  rgb(9, 207, 207);
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+
+}
+
+.switch {
+  grid-area: footerSwitch;
+  cursor:pointer;
+}
+
