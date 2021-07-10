@@ -7,18 +7,30 @@ function Signup({ setState }) {
 
     function submit(event) {
         event.preventDefault();
-        console.log();
         if (event.target.elements[1].value !== event.target.elements[2].value) {
-            alert("Passwords don't match.");
+            event.target.elements[1].style.border = "2px dashed red";
+            event.target.elements[2].style.border = "2px dashed red";
+            alert("Passwords don't match");
             return;
         }
         CognitoUserPool.signUp(email, password, [], null, function (err, data) {
             if (!err) { //Worked. Account created.
                 setState({ status: "login" });
-                alert("Account created! Now login please.");
+                alert("Account created! Confirm your email please.");
                 console.log(data);
-            } else {
+            } else { //Didnt work
                 console.log(err);
+                switch (err.name) {
+                    case "InvalidPasswordException":
+                        event.target.elements[1].style.border = "2px dashed red";
+                        event.target.elements[2].style.border = "2px dashed red";
+                        break;
+                    case "UsernameExistsException":
+                        event.target.elements[0].style.border = "2px dashed red";
+                        break;
+                    default:
+                        break;
+                }
                 alert(err.message);
             }
         })

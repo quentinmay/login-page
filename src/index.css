@@ -5,29 +5,62 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --mainColor:orange;
+  --thirdColor: white;
+  --secondaryColor: rgb(255, 222, 73);
+
+  --background: rgb(206, 255, 255);
+  --backgroundLighter: white;
+  /* 
+  --mainColor:orange;
+  --thirdColor: white;
+  --secondaryColor: rgb(255, 222, 73);
+
+  --background: black;
+  --backgroundLighter: rgb(82, 82, 82); */
+
+  color: var(--mainColor);
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    
 }
+h1 {
+  animation: fadeInSweepDown ease .5s;
 
+}
 
 .login-container {
   max-width: 600px;
+
   justify-self: center;
   border-radius: 10px;
-  border-style: none;
-  margin: auto;
-  background: linear-gradient(to left, orange, yellow);
+  border-style:dotted;
 
+  border-color: var(--mainColor);
+
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  filter: drop-shadow(0px 10px 3px var(--background));
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 50% 50%;
   grid-template-rows: auto auto auto;
   grid-template-areas: 
     "header header"
     "form form"
     "footerSwitch footerButton";
+  transition: all 1s ease;
+  animation: fadeInSweep ease .5s;
+}
+
+.login-container:hover {
+  filter: drop-shadow(0px 10px 4px var(--background));
+
 }
 
 .form-container {
@@ -42,6 +75,7 @@ code {
     "emailGrid"
     "pass1Grid"
     "pass2Grid";
+  
 }
 
 .form-item {
@@ -50,25 +84,30 @@ code {
   border-radius: 5px;
   border-style: solid;
   border-width: thin;
-  border-color: gray;
+  border-color: var(--mainColor);
+  color: black;
+  font-weight: bold;
+  animation: fadeInSweep ease .5s;
 
-  background-color: white;
   height: 40px;
-  background: linear-gradient(70deg, var(--c1, white), var(--c2, transparent) 0%, white) var(--x, 0)/ 200%;
-  transition: 2s;
+  background: linear-gradient(70deg, var(--c1, var(--secondaryColor)), var(--c2, var(--mainColor)) 0%, var(--secondaryColor)) var(--x, 0)/ 200%;
+  transition: 1s;
 }
 
 .form-item:hover{
   --x:100%;
-  filter: drop-shadow(0px 0px 5px gray);
+  filter: drop-shadow(0px 0px 5px var(--secondaryColor));
 }
 
 
 
 
 .header {
+  color:var(--mainColor);
   grid-area: header;
-
+  filter: drop-shadow(0px 1px 1px var(--mainColor));
+  animation: fadeInSweep ease .5s;
+  
 }
 
 #email {
@@ -82,22 +121,46 @@ code {
 }
 .submit-btn {
   grid-area: footerButton;
+  justify-self: right;
+  cursor: pointer;
+  margin-right:30%;
+}
+
+.btn {
   cursor: pointer;
   width: 90px;
   height: 40px;
   border-radius: 4px;
-  border-color: rgb(9, 207, 207);
-  color:  rgb(9, 207, 207);
+  border-color: var(--mainColor);
+  color:  var(--mainColor);
   background-color: transparent;
   font-weight: bold;
+  background:transparent;
+  transition: all 1s ease;
+  animation: fadeInSweepDown ease .5s;
+  
 }
 
-.submit-btn:hover {
-
+.btn:hover {
+  --x:100%;
+  color:black;
+  background: var(--mainColor);
+  font-weight: bolder;
 }
 
 .switch {
   grid-area: footerSwitch;
+  justify-self: left;
+  margin-left: 30%;
   cursor:pointer;
+}
+
+@keyframes fadeInSweep {
+  0%    {opacity: 0; transform: translateX(-10px)}
+  100%  {opacity: 1; transform: translateX(0)}
+}
+@keyframes fadeInSweepDown {
+  0%    {opacity: 0; transform: translateY(-10px)}
+  100%  {opacity: 1; transform: translateY(0)}
 }
 
